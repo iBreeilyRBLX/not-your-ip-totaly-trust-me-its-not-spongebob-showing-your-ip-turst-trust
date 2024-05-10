@@ -3,22 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>heehhow</title>
+    <title>hehehow/title>
     <style>
+        /* Resetting margin and padding for body and HTML */
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
-        }
-
-        /* Centering the content */
-        .container {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            width: 100%;
         }
 
         /* Style for the IP address text */
@@ -31,7 +22,7 @@
             color: white; /* Text color */
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional: Add shadow */
             opacity: 0; /* Initially transparent */
-            animation: fadeIn 1s ease forwards; /* Animation to fade in */
+            animation: fadeIn 2s ease forwards; /* Animation to fade in */
         }
 
         /* Keyframes for the fadeIn animation */
@@ -43,12 +34,33 @@
                 opacity: 1;
             }
         }
+
+        /* Make the image fill the whole screen */
+        #mainImage {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* Put it behind everything else */
+        }
+
+        /* Centering the content */
+        .container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
     </style>
 </head>
 <body>
+    <img src="hehehehoww.jpg" alt="dabad" id="mainImage">
+
     <div class="container">
-        <img src="hehehehoww.jpg" alt="Your Image" id="mainImage">
-        <p id="ipAddress">:))))))</p>
+        <p id="ipAddress">:))</p>
     </div>
 
     <script>
@@ -59,17 +71,19 @@
                     .then(response => response.json())
                     .then(data => {
                         // Display IP address
-                        document.getElementById('ipAddress').textContent = 'you IP address is: ' + data.ip;
+                        var ipAddressElement = document.getElementById('ipAddress');
+                        ipAddressElement.textContent = 'Your IP address is: ' + data.ip;
+                        ipAddressElement.style.opacity = 1; // Fade in the text
                     })
                     .catch(error => {
                         console.error('Error fetching IP address:', error);
-                        document.getElementById('ipAddress').textContent = 'die';
+                        document.getElementById('ipAddress').textContent = 'Failed to fetch IP address';
                     });
-            }, 2500); // Delay of 2.5 seconds
+            }); // Delay of 2.5 seconds
         }
 
         // Delay before displaying IP address
-        setTimeout(displayIpAddress, 1000); // Initial 1 second delay before fetching
+        displayIpAddress();
     </script>
 </body>
 </html>
