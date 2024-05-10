@@ -3,27 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <titlehehehe</title>
+    <title>hehehehow</title>
+    <style>
+        /* Centering the content */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+    </style>
 </head>
 <body>
-    <h1>hehehe how</h1>
-    
-    <p id="ipAddress">:)))))))</p>
+    <div class="container">
+        <img src="hehehehoww.jpg" alt="Your Image" id="mainImage">
+        <p id="ipAddress" style="display: none;">:)))))))</p>
+    </div>
 
     <script>
-        // Fetch IP address using an API
-        fetch('https://api64.ipify.org?format=json')
-            .then(response => response.json())
-            .then(data => {
-                // Display IP address
-                document.getElementById('ipAddress').textContent = 'Your IP address is: ' + data.ip;
-            })
-            .catch(error => {
-                console.error('Error fetching IP address:', error);
-                document.getElementById('ipAddress').textContent = 'Failed to fetch IP address';
-            });
-    </script>
+        // Function to fetch IP address and display it
+        function displayIpAddress() {
+            fetch('https://api64.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    // Display IP address
+                    document.getElementById('ipAddress').textContent = 'Your IP address is: ' + data.ip;
+                    document.getElementById('ipAddress').style.display = 'block';
+                })
+                .catch(error => {
+                    console.error('Error fetching IP address:', error);
+                    document.getElementById('ipAddress').textContent = 'die';
+                    document.getElementById('ipAddress').style.display = 'block';
+                });
+        }
 
-    <p>Other content of your website...</p>
+        // Delay before displaying IP address
+        setTimeout(displayIpAddress, 1000);
+    </script>
 </body>
 </html>
