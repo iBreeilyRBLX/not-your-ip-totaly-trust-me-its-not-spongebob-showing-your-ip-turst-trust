@@ -4,6 +4,15 @@
         <title>testinghahah</title>
     </head>
     <body>
-        Your IP address is: < ? php echo $_SERVER['REMOTE_ADDR'] ? >
+        <?php
+        // Include the configuration file where the function is defined
+        include 'config.php';
+        
+        // Get the client's IP address
+        $client_ip = get_client_ip();
+        
+        // Display the IP address
+        echo "Your IP address is: $client_ip";
+        ?>
     </body>
 </html>
